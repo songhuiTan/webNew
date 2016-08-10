@@ -46,5 +46,7 @@ public class CoreServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO 消息的接收、处理、响应
 	}
+	
+	
 
 }
