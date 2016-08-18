@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<du-web-app xmlns="http://bae.baidu.com/java/1.0">
+  <!-- 注意级别顺序应该从高往低 -->
+  <system-properties>
+    <property name="java.util.logging.level" value="SEVERE"/>
+    <property name="java.util.logging.level" value="WARNING"/>
+    <property name="java.util.logging.level" value="INFO"/>
+  </system-properties>
+
+</du-web-app>

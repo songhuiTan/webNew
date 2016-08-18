@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-	<display-name>Archetype Created Web Application</display-name>
+	<display-name>Web Application</display-name>
+	<servlet>
+		<servlet-name>initServlet</servlet-name>
+		<servlet-class>
+			org.song.course.servlet.InitServlet
+		</servlet-class>
+		<!-- 配置获取access_token所需参数appid和appsecret -->
+		<init-param>
+			<param-name>appid</param-name>
+			<param-value>wxd50d4dbeb2ce2f24</param-value>
+		</init-param>
+		<init-param>
+			<param-name>appsecret</param-name>
+			<param-value>9aec6e257c5ce2aeab9234f8a32a10d7</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
 	<servlet>
 		<servlet-name>NewS</servlet-name>	
 		<servlet-class>com.s.NewS</servlet-class>
@@ -13,7 +29,7 @@
 	<servlet>  
         <servlet-name>coreServlet</servlet-name>  
         <servlet-class>  
-            org.liufeng.course.servlet.CoreServlet  
+            org.song.course.servlet.CoreServlet  
         </servlet-class>  
     </servlet>  
   

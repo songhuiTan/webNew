@@ -1,13 +1,13 @@
 package org.song.course.message.resp;
 
 /**
- * ÒôÀÖÏûÏ¢
+ * éŸ³ä¹æ¶ˆæ¯
  * 
  * @author liufeng
  * @date 2013-05-19
  */
 public class MusicMessage extends BaseMessage {
-	// ÒôÀÖ
+	// éŸ³ä¹
 	private Music Music;
 
 	public Music getMusic() {

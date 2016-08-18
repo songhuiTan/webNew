@@ -4,6 +4,6 @@
 
 <body>
 	<h2>ssasdsaasdasdds</h2>
-	 <img src="/images/login_bg.png" />
+	<img src="/images/login_bg.png" />
 </body>
 </html>
