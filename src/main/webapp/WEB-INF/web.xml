@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 	<display-name>Web Application</display-name>
+<!-- 	<listener> -->
+<!-- 		<listener-class>com.s.Log4jlistener</listener-class> -->
+<!-- 	</listener> -->
 	<servlet>
 		<servlet-name>initServlet</servlet-name>
 		<servlet-class>
@@ -17,6 +20,18 @@
 		</init-param>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
+	
+	
+	<servlet>
+		<servlet-name>oauthServlet</servlet-name>
+		<servlet-class>
+			org.song.course.servlet.OAuthServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>oauthServlet</servlet-name>
+		<url-pattern>/oauthServlet</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>NewS</servlet-name>	
 		<servlet-class>com.s.NewS</servlet-class>

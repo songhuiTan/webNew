@@ -50,7 +50,24 @@ public class CoreServlet extends HttpServlet {
 		// 将请求、响应的编码均设置为UTF-8（防止中文乱码）
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-
+//		// 接收参数微信加密签名、 时间戳、随机数
+//		String signature = request.getParameter("signature");
+//		String timestamp = request.getParameter("timestamp");
+//		String nonce = request.getParameter("nonce");
+//		String isdebug=request.getParameter("debug");
+//		String respXml ="";
+		// 请求校验
+//		if ((isdebug!=null&&"1".equals(isdebug))||SignUtil.checkSignature(signature, timestamp, nonce)) {
+//			// 调用核心服务类接收处理请求
+//			String respXml = CoreService.processRequest(request);
+////			out.print(respXml);
+//		}else
+//		{
+//			
+//		}
+		
+		
+		
 		// 调用核心业务类接收消息、处理消息
 		String respMessage = CoreService.processRequest(request);
 		

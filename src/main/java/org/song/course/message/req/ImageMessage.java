@@ -1,9 +1,10 @@
 package org.song.course.message.req;
+
 /**
  * 图片消息
  * 
  * @author liufeng
- * @date 2013-05-19
+ * @date 2013-09-11
  */
 public class ImageMessage extends BaseMessage {
 	// 图片链接
@@ -17,5 +18,3 @@ public class ImageMessage extends BaseMessage {
 		PicUrl = picUrl;
 	}
 }
-
-

@@ -1,20 +1,12 @@
 package org.song.course.service;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLDecoder;
 import java.util.Calendar;
-import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.song.course.message.resp.Music;
+import org.song.course.util.CalculatePassTimeUtil;
 import org.song.course.util.HttpUtil;
 
 /**
@@ -44,10 +36,20 @@ public class BaiduMusicService {
 		
 		// 新百度音乐搜索地址
 		String requestUrl = "http://tingapi.ting.baidu.com/v1/restserver/ting?from=webapp_music&method=baidu.ting.search.catalogSug&format=xml&callback=&query={TITLE}%AF&_={TIME}";
+		requestUrl = requestUrl.replaceAll("\\+", "%20");
+		
 		// 对模糊查询URL编码
 		requestUrl = requestUrl.replace("{TITLE}", urlEncodeUTF8(musicTitle));//
 		requestUrl = requestUrl.replace("{TIME}", String.valueOf(Calendar.getInstance().getTime().getTime()));
+		
+//		long preTimeL=System.currentTimeMillis();
+//		System.out.println(preTimeL);
+		
+		CalculatePassTimeUtil.setStar(true);
 		String t=HttpUtil.doHttpGet(requestUrl);//执行httpget请求得到json字符串
+		CalculatePassTimeUtil.setEnd(true,"search");
+		CalculatePassTimeUtil.setStar(true);
+		
 		if(t.contains("errno")){
 			Logger logger = Logger.getLogger(BaiduMusicService.class.toString());     
 			logger.fatal("baiduSearchError:URL="+requestUrl);
@@ -58,6 +60,12 @@ public class BaiduMusicService {
 		t=t.replace(")", "");
 //		System.out.println(t);
 		JSONObject resultJson = new JSONObject(t);//百度进行的是模糊搜素，结果有多个，搜索结果可能是对照歌手名字，或者歌手专辑
+		
+		
+		CalculatePassTimeUtil.setEnd(true,"json0");
+		CalculatePassTimeUtil.setStar(true);
+		
+		
 		JSONArray array = (JSONArray) resultJson.get("song");
 		JSONObject dst = null;//
 		JSONObject searchJson =null;
@@ -72,10 +80,14 @@ public class BaiduMusicService {
 			dst=array.getJSONObject(0);
 			musicAuthor="";
 		}
-		
+		CalculatePassTimeUtil.setEnd(true,"json1");
+		CalculatePassTimeUtil.setStar(true);
 		//通过songid获得歌曲链接
 		String musicUrl = "http://ting.baidu.com/data/music/links?songIds="+dst.getString("songid");
 		String dlStr=HttpUtil.doHttpGet(musicUrl);
+		
+		CalculatePassTimeUtil.setEnd(true,"getsongid");
+		CalculatePassTimeUtil.setStar(true);
 		
 		//测试download接口 
 //		String downLoadMusicUrl = "http://tingapi.ting.baidu.com/v1/restserver/ting?from=webapp_music&method=baidu.ting.song.downWeb&format=json&callback=&songid={SONGID}&bit={BIT}&_={TIME}";
@@ -93,10 +105,14 @@ public class BaiduMusicService {
 		if(songLink.contains("\"")){
 			songLink=songLink.replace("\"", "");
 		}
+		CalculatePassTimeUtil.setEnd(true,"json2");
+		CalculatePassTimeUtil.setStar(true);
 //		System.out.println(songLink);
 //		String musicAuthor=mJsonOb0.getString("artistName");
 		// 从返回结果中解析出Music
 //		Music music = parseMusic(songLink);
+		
+		
 		
 		Music music = new Music();
 		// 设置普通品质音乐链接
@@ -213,7 +229,7 @@ public class BaiduMusicService {
 
 	// 测试方法
 	public static void main(String[] args) throws Exception {
-		Music music = searchMusic("喜欢你","邓紫棋");
+		Music music = searchMusic("存在","汪峰");
 		System.out.println("音乐名称：" + music.getTitle());
 		System.out.println("音乐描述：" + music.getDescription());
 		System.out.println("普通品质链接：" + music.getMusicUrl());

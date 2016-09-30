@@ -1,5 +1,4 @@
 package org.song.course.message.resp;
-import java.util.List;
 
 import java.util.List;
 
@@ -7,7 +6,7 @@ import java.util.List;
  * 文本消息
  * 
  * @author liufeng
- * @date 2013-05-19
+ * @date 2013-09-11
  */
 public class NewsMessage extends BaseMessage {
 	// 图文消息个数，限制为10条以内

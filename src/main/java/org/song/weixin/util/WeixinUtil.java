@@ -28,6 +28,10 @@ import org.slf4j.LoggerFactory;
  */
 public class WeixinUtil {
 	private static Logger log = LoggerFactory.getLogger(WeixinUtil.class);
+	
+	
+	
+	
 
 	/**
 	 * 发起https请求并获取结果

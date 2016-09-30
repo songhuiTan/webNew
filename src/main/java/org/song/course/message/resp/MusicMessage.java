@@ -4,7 +4,7 @@ package org.song.course.message.resp;
  * 音乐消息
  * 
  * @author liufeng
- * @date 2013-05-19
+ * @date 2013-09-11
  */
 public class MusicMessage extends BaseMessage {
 	// 音乐

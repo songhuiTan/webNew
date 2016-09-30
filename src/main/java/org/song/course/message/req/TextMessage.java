@@ -4,7 +4,7 @@ package org.song.course.message.req;
  * 文本消息
  * 
  * @author liufeng
- * @date 2013-05-19
+ * @date 2013-09-11
  */
 public class TextMessage extends BaseMessage {
 	// 消息内容

@@ -1,9 +1,10 @@
 package org.song.course.message.req;
+
 /**
  * 地理位置消息
  * 
  * @author liufeng
- * @date 2013-05-19
+ * @date 2013-09-11
  */
 public class LocationMessage extends BaseMessage {
 	// 地理位置维度

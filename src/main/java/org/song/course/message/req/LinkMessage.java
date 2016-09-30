@@ -4,7 +4,7 @@ package org.song.course.message.req;
  * 链接消息
  * 
  * @author liufeng
- * @date 2013-05-19
+ * @date 2013-09-11
  */
 public class LinkMessage extends BaseMessage {
 	// 消息标题
@@ -38,5 +38,3 @@ public class LinkMessage extends BaseMessage {
 		Url = url;
 	}
 }
-
-
